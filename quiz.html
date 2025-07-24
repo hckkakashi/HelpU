@@ -122,7 +122,7 @@
   </div>
 
   <div class="question">
-    <h3>7. .When faced with strong/overwhelming emotion,</h3>
+    <h3>8. When faced with strong/overwhelming emotion,</h3>
     <label><input type="radio" name="q8" value="1" required> A. I feel confused and overwhelmend</label>
     <label><input type="radio" name="q8" value="2"> B. I try to calm myself but fails</label>
     <label><input type="radio" name="q8" value="3"> C. I calm myself down</label>
@@ -130,7 +130,7 @@
   </div>
 
   <div class="question">
-    <h3>. Are you very self-critical?</h3>
+    <h3>9. Are you very self-critical?</h3>
     <label><input type="radio" name="q9" value="1" required> A. Yes, i criticize myself and my action daily</label>
     <label><input type="radio" name="q9" value="2"> B. I rarely criticize myselfs</label>
     <label><input type="radio" name="q9" value="3"> C. I am only critical for things i should be</label>
@@ -145,7 +145,7 @@
     const form = document.forms['quizForm'];
     let score = 0;
 
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 9; i++) {
       const answer = form['q' + i].value;
       score += parseInt(answer);
     }
