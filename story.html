@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anonymous Stories - Help U</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+      margin: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      color: #0077b6;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: #00b4d8;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #0077b6;
+    }
+
+    #story-confirm {
+      color: green;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .story-list {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+    }
+
+    .story-item {
+      background-color: #e0f7fa;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+    <div class="logo"><a style="color:white; font-size: 1.5rem; font-weight: bold;" href="#">Help U</a></div>
+    <div class="nav-links">
+      <a href="./index.html">About Us</a>
+      <a href="./quiz.html">Quiz</a>
+      <a href="./index.html">Therapy</a>
+      <a href="./chat.html">Chat Room</a>
+      <a href="./story.html">Anonymous Story</a>
+      <a href="./index.html">Location</a>
+    </div>
+  </nav>
+
+  <section class="story-section">
+    <h2>Anonymous Stories</h2>
+    <p>Read real stories from others or share your own anonymously.</p>
+    <textarea placeholder="Share your story..." id="story-input" aria-label="Share your story"></textarea>
+    <button onclick="submitStory()">Submit Anonymously</button>
+    <div id="story-confirm" role="alert" aria-live="polite"></div>
+
+    <h3>Stories from our community:</h3>
+    <div id="story-list" class="story-list"></div>
+  </section>
+
+  <script>
+    // Load saved stories from localStorage on page load
+    const storyList = document.getElementById('story-list');
+    const confirmBox = document.getElementById('story-confirm');
+    let stories = JSON.parse(localStorage.getItem('anonymousStories')) || [];
+
+    function displayStories() {
+      storyList.innerHTML = '';
+      if (stories.length === 0) {
+        storyList.innerHTML = '<p>No stories shared yet. Be the first to share!</p>';
+        return;
+      }
+      stories.forEach((story, index) => {
+        const div = document.createElement('div');
+        div.classList.add('story-item');
+        div.textContent = story;
+        storyList.appendChild(div);
+      });
+    }
+
+    function submitStory() {
+      const input = document.getElementById('story-input');
+      const text = input.value.trim();
+      if (text.length < 10) {
+        confirmBox.style.color = 'red';
+        confirmBox.textContent = 'Please share a story with at least 10 characters.';
+        return;
+      }
+      // Add story to array and save in localStorage
+      stories.unshift(text);
+      localStorage.setItem('anonymousStories', JSON.stringify(stories));
+
+      // Clear input and update display
+      input.value = '';
+      confirmBox.style.color = 'green';
+      confirmBox.textContent = 'Thank you for sharing your story anonymously!';
+      displayStories();
+    }
+
+    // Initialize display on page load
+    displayStories();
+  </script>
+
+</body>
+</html>

@@ -193,6 +193,26 @@
   background: #f4faff;
   border-radius: 6px;
 }
+.map-section {
+    padding: 40px 20px;
+    background-color: #f0f8ff;
+    text-align: center;
+  }
+
+  .map-section h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    margin-bottom: 20px;
+  }
+
+  #map {
+    height: 500px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
 
 .input-area {
   display: flex;

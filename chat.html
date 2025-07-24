@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Chat - Help U</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+      margin: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      color: #0077b6;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .chat-box {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: #e0f7fa;
+      height: 350px;
+      overflow-y: auto;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      background-color: #00b4d8;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 75%;
+      word-wrap: break-word;
+      font-size: 1rem;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    #community-input {
+      flex-grow: 1;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    #community-input:focus {
+      border-color: #0077b6;
+      box-shadow: 0 0 5px #00b4d8;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005f73;
+    }
+  </style>
+</head>
+<body>
+<nav>
+    <div class="logo"><a style="color:white; font-size: 1.5rem; font-weight: bold;" href="#">Help U</a></div>
+    <div class="nav-links">
+      <a href="./index.html">About Us</a>
+      <a href="./quiz.html">Quiz</a>
+      <a href="./index.html">Therapy</a>
+      <a href="./chat.html">Chat Room</a>
+      <a href="./story.html">Anonymous Story</a>
+      <a href="./index.html">Location</a>
+    </div>
+  </nav>
+  <section class="community-chat">
+    <h2>Community Chat</h2>
+    <div id="chat-messages" class="chat-box" aria-live="polite" aria-label="Community chat messages"></div>
+    <div class="input-area">
+      <input type="text" id="community-input" placeholder="Say something..." aria-label="Type your message" />
+      <button onclick="sendCommunityMessage()">Send</button>
+    </div>
+  </section>
+
+  <script>
+    const chatMessages = document.getElementById('chat-messages');
+    const communityInput = document.getElementById('community-input');
+
+    // Load chat messages from localStorage or start empty
+    let messages = JSON.parse(localStorage.getItem('communityChatMessages')) || [];
+
+    function displayMessages() {
+      chatMessages.innerHTML = '';
+      if (messages.length === 0) {
+        chatMessages.innerHTML = '<p style="color:#666; text-align:center;">No messages yet. Start the conversation!</p>';
+        return;
+      }
+      messages.forEach(msg => {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message');
+        msgDiv.textContent = msg;
+        chatMessages.appendChild(msgDiv);
+      });
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendCommunityMessage() {
+      const text = communityInput.value.trim();
+      if (text.length < 1) return; // Don't send empty messages
+
+      messages.push(text);
+      localStorage.setItem('communityChatMessages', JSON.stringify(messages));
+      communityInput.value = '';
+      displayMessages();
+    }
+
+    // Allow sending message with Enter key
+    communityInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendCommunityMessage();
+      }
+    });
+
+    // Initialize on page load
+    displayMessages();
+  </script>
+
+</body>
+</html>
