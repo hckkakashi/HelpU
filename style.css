@@ -5,7 +5,6 @@
       color: #333;
     }
 
-
     nav {
       background-color: #005f73;
       padding: 1rem;
@@ -259,3 +258,8 @@ footer {
       padding: 20px;
       text-align: center;
     }
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
