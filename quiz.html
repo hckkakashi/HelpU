@@ -146,12 +146,10 @@
     const form = document.forms['quizForm'];
     let score = 0;
 
-
-    for (let i = 1; i <= 9; i++) {
-  const answer = form['q' + i].value;
-  console.log(`Q${i} = `, answer); // ← See if all answers are recorded
-  score += parseInt(answer);
-}
+   for (let i = 1; i <= 9; i++) {
+      const answer = form['q' + i].value;
+      score += parseInt(answer);
+    }
 
     let resultText = '';
     if (score <= 13) {
