@@ -5,43 +5,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HelpU</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-     body {
-    background-color: #677eaf;
-  }
-    h1{
-        font-family: 'Arial Black', sans-serif;
-      color: #3533b3; 
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>WELCOME to HelpU</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section>
-      <h2>About This Site</h2>
-      <p>This site helps you to overcome your problem regarding mental health</p>
-    </section>
-  </main>
+  <nav>
+    <div class="logo"><a style="color:white; font-size: 1.5rem; font-weight: bold;" href="#">Help U</a></div>
+    <div class="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#therapy">Therapy</a>
+      <a href="#chat">Chat Room</a>
+      <a href="#story">Anonymous Story</a>
+      <a href="#location">Location</a>
+    </div>
+  </nav>
 
+  <div class="hero">
+    <img src="https://images.unsplash.com/photo-1588776814546-ec7e8e95c27e?auto=format&fit=crop&w=800&q=80" alt="Mental Health Support">
+    <div class="hero-text">
+      <h1>You Are Not Alone</h1>
+      <p>We are here to help you through your mental health journey with care, support, and understanding.</p>
+      <button>Learn More</button>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Help U is dedicated to providing accessible and compassionate mental health support, increasing awareness, and fostering a safe, inclusive community for individuals from all walks of life. <br>We believe that everyone deserves a space to feel heard, supported, and understood. Whether you're facing anxiety, stress, trauma, or just need someone to talk to, Help U offers resources, professional guidance, and peer support to walk alongside you on your journey to healing.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-box">
+        <h3>1-on-1 Therapy</h3>
+        <p>Connect with certified professionals for personalized sessions.</p>
+      </div>
+      <div class="service-box">
+        <h3>Mindset Quiz</h3>
+        <p>Evaluate your emotional state and track your growth.</p>
+      </div>
+      <div class="service-box">
+        <h3>Chat Room</h3>
+        <p>Join a safe, moderated space to talk and listen anonymously.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="therapy">
+    <h2>Therapy Resources</h2>
+    <p>Explore curated mental health videos from experts.</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WWloIAQpMcQ" title="Mental Health Support Video" frameborder="0" allowfullscreen></iframe>
+  </section>
+  <section class="tip-section">
+    <h2>Daily Self-Care Tip</h2>
+    <p id="daily-tip">Take a deep breath. Hold it. Now slowly exhale. Repeat this 3 times to calm your body.</p>
+  </section>
   <footer>
-    <p>&copy; 2025 My Website</p>
+    <p>&copy; 2025 MindCare Nepal | Mental Health Awareness and Support</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
