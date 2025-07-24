@@ -52,7 +52,7 @@
 </head>
 <body>
 
-<h1>🧠 Mindset Check Quiz</h1>
+<h1>Mindset Check Quiz</h1>
 
 <form id="quizForm">
   <div class="question">
@@ -126,11 +126,11 @@
 
     let resultText = '';
     if (score <= 13) {
-      resultText = '🟥 Fixed or Negative Mindset';
+      resultText = 'Fixed or Negative Mindset';
     } else if (score <= 20) {
-      resultText = '🟨 Developing or Mixed Mindset';
+      resultText = 'Developing or Mixed Mindset';
     } else {
-      resultText = '🟩 Growth-Oriented and Positive Mindset';
+      resultText = 'Growth-Oriented and Positive Mindset';
     }
 
     document.getElementById('result').innerText = `Your Score: ${score}/28\nResult: ${resultText}`;
