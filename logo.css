@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+#logo {
+  height: 60px;
+  width: auto;
+}
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
