@@ -3,9 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to HelpU</title>
+    <title>About Us - HelpU</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .main-heading {
+            color: #3a4b6d;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: colorShift 8s infinite alternate;
+        }
+        @keyframes colorShift {
+            0% { color: #3a4b6d; }
+            50% { color: #4a6baf; }
+            100% { color: #2c3e50; }
+        }
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-item {
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-left: 4px solid transparent;
+        }
+        .service-item:hover {
+            transform: translateX(10px);
+            background-color: rgba(255,255,255,0.3);
+            border-left: 4px solid #4a6baf;
+        }
+    </style>
 </head>
-<body>
-    
+<body style="cursor: crosshair; background-color: #f0f8ff;">
+    <header style="background: linear-gradient(to right, #667eea, #764ba2); color: white; padding: 3rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <h1 class="main-heading">Welcome to HelpU</h1>
+        <p>At HelpU, we believe that mental health matters just as much as physical health.</p>
+    </header>
+
+    <section id="mission" style="background: white; padding: 2.5rem; margin: 2rem auto; border-radius: 12px; max-width: 900px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 5px solid #4a6baf;">
+        <h2>Our Mission</h2>
+        <p>Our mission is to make mental health care accessible, engaging, and supportive for everyone, especially youth and students who may be struggling with anxiety, overthinking, sadness, loneliness, or addictive behaviors. We aim to break the stigma around mental health by creating a space where users feel heard, valued, and supported.</p>
+    </section>
+
+    <section id="services" style="background: linear-gradient(145deg, #f9f9ff 0%, #eef2ff 100%); padding: 2.5rem; margin: 2rem auto; border-radius: 12px; max-width: 900px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <h2>What You Can Do Here</h2>
+        <ul>
+            <li class="service-item"><strong>Chatbot for Support:</strong> A friendly AI chatbot is available 24/7 to help you calm your mind, check in on your feelings, and give instant suggestions for relief strategies.</li>
+            <li class="service-item"><strong>Mental Health Quiz & Games:</strong> Understand yourself better through quick, interactive quizzes and games designed to reflect on your emotional and mental well-being.</li>
+            <li class="service-item"><strong>Talk with a Specialist:</strong> Connect with licensed mental health professionals when you're ready to talk. We’re here to listen without judgment.</li>
+            <li><strong>Find Nearby Help:</strong> Use our map feature to locate nearby hospitals, counseling centers, or safe spaces that provide mental health support.</li>
+            <li><strong>Relaxation Zone:</strong> Watch relaxing videos, listen to calming beats, and follow guided breathing techniques whenever you feel anxious or low.</li>
+        </ul>
+    </section>
+
+    <section id="privacy">
+        <h2>Privacy & Confidentiality</h2>
+        <p>We deeply value your trust. All your chats and quiz responses remain private and secure. You control what you share, and we never share your data with anyone.</p>
+    </section>
+
+    <section id="importance">
+        <h2>Why Mental Health Matters</h2>
+        <p>Mental health affects how we think, feel, and act. It influences how we handle stress, relate to others, and make decisions. Struggles with mental health are normal, and help is always available. You're not alone.</p>
+    </section>
+
+    <section id="call-to-action">
+        <h2>Start Your Journey</h2>
+        <p>Whether you need support, want to understand yourself better, or just need a safe space — we’re here for you.</p>
+        <p>Ready to explore? Try our chatbot, take a quiz, or talk to a specialist — all just a click away.</p>
+    </section>
+
+    <footer style="background: linear-gradient(to right, #4b6cb7, #182848); color: white; padding: 2rem; text-align: center; margin-top: 3rem;">
+        <p style="margin: 0; font-size: 1.1rem;">&copy; 2023 HelpU. All rights reserved.</p>
+        <div style="margin-top: 1rem;">
+            <button style="background: white; color: #4b6cb7; border: none; padding: 8px 20px; border-radius: 50px; margin: 0 5px; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';">Contact Us</button>
+            <button style="background: transparent; color: white; border: 2px solid white; padding: 8px 20px; border-radius: 50px; margin: 0 5px; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)';this.style.transform='scale(1.05)';" onmouseout="this.style.background='transparent';this.style.transform='scale(1)';">Follow Us</button>
+        </div>
+    </footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
