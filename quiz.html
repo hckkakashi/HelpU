@@ -170,6 +170,30 @@
       <label><input type="radio" name="q13" value="4"> I rarely get mood swings</label>
     </div>
 
+    <div class="question">
+      <h3>14. What emotion do you mainly feel?</h3>
+      <label><input type="radio" name="q14" value="1" required> Sad, anxiety, fear</label>
+      <label><input type="radio" name="q14" value="2"> Joy, love</label>
+      <label><input type="radio" name="q14" value="3"> Anger, envy, disgust</label>
+      <label><input type="radio" name="q14" value="4"> It usually mix of all</label>
+    </div>
+
+    <div class="question">
+      <h3>15. Do you feel a sense of purpose in life?</h3>
+      <label><input type="radio" name="q15" value="1" required> No, everything feels meaningless</label>
+      <label><input type="radio" name="q15" value="2"> Yes, I feel a strong sense of purpose</label>
+      <label><input type="radio" name="q15" value="3"> Sometimes I feel no purpose</label>
+      <label><input type="radio" name="q15" value="4"> I don't have a strong purpose but it also doesn't feel meaningless</label>
+    </div>
+
+    <div class="question">
+      <h3>16. Do you have someone to share your thoughts with?</h3>
+      <label><input type="radio" name="q16" value="1" required> Yes, I have a lot of friends and family to share to</label>
+      <label><input type="radio" name="q16" value="2"> No, I am all alone and feel no one wants to hear it</label>
+      <label><input type="radio" name="q16" value="3"> I have a few close friends to share with</label>
+      <label><input type="radio" name="q16" value="4"> I don't feel like sharing it with other people</label>
+    </div>
+
   <button type="button" id="submit">Submit</button>
   <div id="result"></div>
 </form>
@@ -179,24 +203,22 @@
     let score = 0;
 
 
-    for (let i = 1; i <= 12; i++) {
-
-   for (let i = 1; i <= 9; i++) {
-
+     for (let i = 1; i <= 16; i++) {
       const answer = form['q' + i].value;
       score += parseInt(answer);
     }
 
     let resultText = '';
-    if (score <= 24){
+    if (score <= 32){
       resultText = 'Fixed or Negative Mindset';
-    } else if (score >24 && score<=36) {
+    } else if (score > 32 && score <= 48) {
       resultText = 'Developing or Mixed Mindset';
     } else {
       resultText = 'Growth-Oriented and Positive Mindset';
     }
 
-    document.getElementById('result').innerText = `Your Score: ${score}/48\nResult: ${resultText}`;
+    document.getElementById('result').innerText= `Your Score: ${score}/48\nResult: ${resultText}`;
+    document.getElementById('result').innerText = `Your Score: ${score}/64\nResult: ${resultText}`;
   });
 </script>
 </body>

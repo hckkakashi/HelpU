@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HelpU</title>
   <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Add these two lines for Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.0.0/firebase-database-compat.js"></script>
 </head>
 <body>
 
@@ -30,7 +33,7 @@
     <div class="hero-text">
       <h1>You Are Not Alone</h1>
       <p>We are here to help you through your mental health journey with care, support, and understanding.</p>
-      <button>Learn More</button>
+      <button> <a href="learnmore.html">Learn more</a></button>
     </div>
   </div>
 
@@ -68,7 +71,7 @@
     <h2>Daily Self-Care Tip</h2>
     <p id="daily-tip">Take a deep breath. Hold it. Now slowly exhale. Repeat this 3 times to calm your body.</p>
   </section>
-    <div class="chatbot-icon" onclick="toggleChatbot()">💬</div>
+    <button class="chatbot-icon" id="chatbot-button">💬</button>
   <div class="chatbot-popup" id="chatbot-popup">
     <h3>Mental Health Chat</h3>
     <div id="chat-box" class="chat-box"></div>
@@ -84,7 +87,8 @@
 <footer>
     <p>&copy; 2025 MindCare Nepal | Mental Health Awareness and Support</p>
   </footer>
-  <script type="module" src="script.js"></script>
-  <script type="module" src="location.js"></script>
+  <script  src="./script.js"></script>
+  <script src="./location.js"></script>
+  
 </body>
 </html>

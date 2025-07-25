@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+//import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+//import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
 // Firebase config
 const firebaseConfig = {
@@ -13,9 +13,9 @@ const firebaseConfig = {
   measurementId: "G-9EHZF5K3KJ"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+// Initialize Firebasea
+ firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
 // Gemini API key
 const GEMINI_API_KEY = "AIzaSyBSXzOaGJFn9hez2ecDVM-s_HsXtglQ_Ug";
@@ -91,7 +91,7 @@ function sendCommunityMessage() {
     return;
   }
 
-  push(ref(db, "messages"), {
+  push(db.ref("messages"), {
     text,
     time: Date.now(),
     user: "Anonymous"
@@ -101,18 +101,20 @@ function sendCommunityMessage() {
 }
 
 // Listen and display messages from community chat
-onValue(ref(db, "messages"), (snapshot) => {
+db.ref("messages").on( "value", (snapshot) => {
   const chatBox = document.getElementById("chat-messages");
-  chatBox.innerHTML = "";
-  snapshot.forEach(child => {
-    const msg = child.val();
-    const time = new Date(msg.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    const div = document.createElement("div");
-    div.textContent = `${msg.user} (${time}): ${msg.text}`;
-    div.style.marginBottom = "5px";
-    chatBox.appendChild(div);
-  });
-  chatBox.scrollTop = chatBox.scrollHeight;
+  if(chatBox){
+    chatBox.innerHTML = "";
+    snapshot.forEach(child => {
+      const msg = child.val();
+      const time = new Date(msg.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      const div = document.createElement("div");
+      div.textContent = `${msg.user} (${time}): ${msg.text}`;
+      div.style.marginBottom = "5px";
+      chatBox.appendChild(div);
+    });
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
 });
 
 // Submit anonymous story
@@ -142,7 +144,7 @@ function submitStory() {
 }
 
 // Display submitted stories
-onValue(ref(db, "stories"), (snapshot) => {
+db.ref("stories").on("value", (snapshot) => {
   const storyList = document.getElementById("story-list");
   if (!storyList) return;
 
@@ -165,6 +167,17 @@ onValue(ref(db, "stories"), (snapshot) => {
     `;
     storyList.appendChild(storyDiv);
   });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const chatBotButton = document.getElementById('chatbot-button');
+
+  if(chatBotButton){
+    chatBotButton.addEventListener('click', function() {
+      console.log("Chat button is clicked");
+      toggleChatbot();
+    });
+  }
 });
 
 // Make functions available to HTML buttons
